@@ -38,6 +38,12 @@
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
         </dependency>
+        <!-- 调用MD5进行密码加密-->
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.15</version>
+        </dependency>
 <!--        整合redis实现token登录-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

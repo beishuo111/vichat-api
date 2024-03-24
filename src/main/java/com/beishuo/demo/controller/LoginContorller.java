@@ -2,23 +2,21 @@ package com.beishuo.demo.controller;
 
 import com.beishuo.demo.common.Result;
 import com.beishuo.demo.entity.User;
-import com.beishuo.demo.mapper.UserMapper;
-import com.beishuo.demo.service.UserService;
+import com.beishuo.demo.service.LoginService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpSession;
 
 @RestController
 @RequestMapping("/user")
 public class LoginContorller {
 
     @Resource
-    private UserService userService;
+    private LoginService loginService;
 
     @PostMapping("/login")
     public Result<?> Login(@RequestBody User user) {
-        Object o = userService.Login(user.getUsername(), user.getPassword());
+        Object o = loginService.Login(user.getUsername(), user.getPassword());
         if (o != null) {
             System.out.println(o);
             //存入session
@@ -31,7 +29,7 @@ public class LoginContorller {
     }
     @PostMapping("/register")
     public Result<?> Register(@RequestBody User user) {
-        Object o = userService.Register(user);
+        Object o = loginService.Register(user);
         if (o != null) {
             System.out.println("新增用户"+user);
             return Result.success(o);
